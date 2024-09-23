@@ -1,0 +1,21 @@
+# Ноде-модулі
+node_modules/
+
+# Лог-файли
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Виробничі зборки
+dist/
+build/
+
+# Конфігураційні файли для середовища
+.env
+
+# Файли IDE та редакторів
+.idea/
+.vscode/
+
+# Кеші тестів
+coverage/
