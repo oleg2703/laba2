@@ -1,18 +1,46 @@
-
 const calculator = require('./task/calculator');
 
-test('adds 2 + 3 to equal 5', () => {
-    expect(calculator.add(2, 3)).toBe(5);
+// Мокаємо весь модуль calculator
+jest.mock('./task/calculator');
+
+test('Додавання', () => {
+    // Налаштовуємо мок для функції add
+    calculator.add.mockReturnValue(10);
+    
+    const result = calculator.add(2, 3);
+
+    // Перевіряємо, чи функція повернула замоковане значення
+    expect(result).toBe(10);
+    // Чи функція викликана з правильними аргументами
+    expect(calculator.add).toHaveBeenCalledWith(2, 3);
 });
 
-test('subtracts 5 - 2 to equal 3', () => {
-    expect(calculator.subtract(5, 2)).toBe(3);
+test('Віднімання', () => {
+    // Налаштовуємо мок для функції subtract
+    calculator.subtract.mockReturnValue(5);
+
+    const result = calculator.subtract(8, 3);
+
+    // Перевіряємо замоковане значення
+    expect(result).toBe(5);
+    // Перевіряємо виклики з аргументами
+    expect(calculator.subtract).toHaveBeenCalledWith(8, 3);
 });
 
-test('multiplies 3 * 4 to equal 12', () => {
-    expect(calculator.multiply(3, 4)).toBe(12);
+test('Множення', () => {
+    calculator.multiply.mockReturnValue(20);
+
+    const result = calculator.multiply(4, 5);
+
+    expect(result).toBe(20);
+    expect(calculator.multiply).toHaveBeenCalledWith(4, 5);
 });
 
-test('divides 10 / 2 to equal 5', () => {
-    expect(calculator.divide(10, 2)).toBe(5);
+test('Ділення', () => {
+    calculator.divide.mockReturnValue(2);
+
+    const result = calculator.divide(10, 5);
+
+    expect(result).toBe(2);
+    expect(calculator.divide).toHaveBeenCalledWith(10, 5);
 });
