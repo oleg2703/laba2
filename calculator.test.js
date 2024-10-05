@@ -1,6 +1,6 @@
 const calculator = require('./task/calculator');
 
-
+// Мокаємо весь модуль calculator
 jest.mock('./task/calculator');
 
 test('Додавання', () => {
